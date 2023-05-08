@@ -4,9 +4,6 @@ from faker import Faker
 # Set up Faker to generate realistic fake data
 fake = Faker()
 
-# Define the number of entities to generate
-n = 100
-
 # Generate random attributes for each entity
 data = []
 for i in range(100000):
@@ -16,9 +13,9 @@ for i in range(100000):
     time = fake.random_int(min=1, max=48)
     score = 1 if throw_type == 'Free Throw' else 2 if throw_type == 'Field throw' else 3 if throw_type == 'Three Point' else 0
     location = fake.random_element(
-        elements=('beyond helf court', 'left three point line', 'right three point line')) if score == 3 \
+        elements=('beyond helf court', 'left 3 point line', 'right 3 point line')) if score == 3 \
         else fake.random_element(
-        elements=('left side inside the arc', 'right side inside the arc', 'left baseline', 'right baseline', 'paint'))\
+        elements=('left inside arc', 'right inside arc', 'left baseline', 'right baseline', 'paint'))\
         if score == 2 else 'foul line'
     thrower_ID = fake.random_int(min=1, max=500)
     game_ID = fake.random_int(min=1, max=10000)
