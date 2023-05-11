@@ -7,5 +7,6 @@ CREATE TABLE Throw
   location VARCHAR(30) NOT NULL,
   thrower_ID INT NOT NULL,
   game_ID INT NOT NULL,
-  PRIMARY KEY (time, game_ID)
+  throw_ID INT NOT NULL,
+  PRIMARY KEY (game_ID, throw_ID)
 );
