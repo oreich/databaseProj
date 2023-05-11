@@ -10,7 +10,7 @@ for i in range(250000):
     throw_type = fake.random_element(elements=('Free Throw', 'Field throw', 'Three Point', 'missed'))
     style_throw = fake.random_element(elements=(
         'dunk', 'layup', 'jump shot', 'hook', 'alley oop', 'tip in')) if throw_type != 'Free Throw' else 'Free Throw'
-    throw_ID = i + 1
+    throw_ID = i + 1 + 250000
     time = fake.random_int(min=1, max=48)
     score = 1 if throw_type == 'Free Throw' else 2 if throw_type == 'Field throw' else 3 if throw_type == 'Three Point' else 0
     location = fake.random_element(
