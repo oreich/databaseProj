@@ -23,6 +23,7 @@ from datetime import datetime, timedelta
 
 
 for i in range(n):
+    manger_ID = i + 1
     first_name = fake.first_name()
     last_name = fake.last_name()
     team_id = fake.random_int(min=1, max=500)  # it can be that two or more people have the same team id
@@ -34,7 +35,8 @@ for i in range(n):
     start_date = datetime(year, month, day)
     end_date = start_date + timedelta(days=365)
 
-    data.append({'First Name': first_name, 'Last Name': last_name, 'Team ID': team_id, 'Age': age, 'Date': start_date})
+    data.append({'manger_ID': manger_ID,'First Name': first_name, 'Last Name': last_name, 'Team ID': team_id, 'Age': age,
+                 'Date': start_date, 'End Date': end_date})
 
 # Create a pandas DataFrame from the generated data
 df = pd.DataFrame(data)
