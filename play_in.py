@@ -23,21 +23,19 @@ from datetime import datetime, timedelta
 
 
 for i in range(n):
-    coach_helper = i + 1
-    first_name = fake.first_name()
-    last_name = fake.last_name()
-    team_id = fake.random_int(min=1, max=500)  # it can be that two or more people have the same team id
-    age = fake.random_int(min=18, max=80)
+    team_ID = fake.random_int(min=1, max=500)
+    player_ID = i +1
+    salary = fake.random_int(min=100000, max=10000000)
+    start_year = random.randint(1946, 2023)
 
 
 
-
-    data.append({'coach_helper': coach_helper,'First Name': first_name, 'Last Name': last_name, 'Team ID': team_id, 'Age': age,})
+    data.append({'player_ID': player_ID,'team_ID': team_ID, 'salary': salary,
+                 'start_year': start_year})
 
 # Create a pandas DataFrame from the generated data
 df = pd.DataFrame(data)
 # Write dataframe to CSV file
-df.to_csv('coach_helper.csv', index=False)
+df.to_csv('play_in.csv', index=False)
 
-# Write dataframe to TXT file
-# df.to_csv('manger.txt', index=False, sep='\t')
+
