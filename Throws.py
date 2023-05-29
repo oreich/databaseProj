@@ -7,18 +7,19 @@ fake = Faker()
 # Generate random attributes for each entity
 data = []
 for i in range(250000):
-    throw_type = fake.random_element(elements=('Free Throw', 'Field throw', 'Three Point', 'missed'))
+    throw_type = fake.random_element(elements=('Free Throw', 'Field throw', 'Three Point'))
     style_throw = fake.random_element(elements=(
-        'dunk', 'layup', 'jump shot', 'hook', 'alley oop', 'tip in')) if throw_type != 'Free Throw' else 'Free Throw'
+        'dunk', 'layup', 'jump shot', 'hook', 'alley oop', 'tip in'))# if throw_type != 'Free Throw' else 'Free Throw'
     throw_ID = i + 1 + 250000
     time = fake.random_int(min=1, max=48)
-    score = 1 if throw_type == 'Free Throw' else 2 if throw_type == 'Field throw' else 3 if throw_type == 'Three Point' else 0
+    flag = fake.random_int(min=0, max=1)
+    score = 0 if flag == 0 else 1 if throw_type == 'Free Throw' else 2 if throw_type == 'Field throw' else 3 #if throw_type == 'Three Point'
     location = fake.random_element(
         elements=('beyond helf court', 'left 3 point line', 'right 3 point line')) if score == 3 \
         else fake.random_element(
         elements=('left inside arc', 'right inside arc', 'left baseline', 'right baseline', 'paint')) \
         if score == 2 else 'foul line'
-    thrower_ID = fake.random_int(min=1, max=500)
+    thrower_ID = fake.random_int(min=1, max=20000)
     game_ID = fake.random_int(min=1, max=10000)
 
     data.append(
