@@ -1,7 +1,7 @@
 CREATE TABLE Throw
 (
-  type VARCHAR(30) NOT NULL,
-  style VARCHAR(30) NOT NULL,
+  throw_type VARCHAR(30) NOT NULL,
+  style_throw VARCHAR(30) NOT NULL,
   time INT NOT NULL,
   score INT NOT NULL,
   location VARCHAR(30) NOT NULL,
