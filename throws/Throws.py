@@ -6,7 +6,7 @@ fake = Faker()
 
 # Generate random attributes for each entity
 data = []
-for i in range(300000):
+for i in range(150000):
     throw_type = fake.random_element(elements=('Free Throw', 'Field throw', 'Three Point'))
     style_throw = fake.random_element(elements=(
         'dunk', 'layup', 'jump shot', 'hook', 'alley oop', 'tip in')) if throw_type != 'Free Throw' else 'Free Throw'
