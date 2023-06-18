@@ -1,34 +1,33 @@
-CREATE OR REPLACE PROCEDURE get_top_players(p_result OUT SYS_REFCURSOR)
+CREATE OR REPLACE TYPE player_info_type AS OBJECT (
+    thrower_ID   INT,
+    average_score NUMBER
+);
+
+CREATE OR REPLACE TYPE player_info_table AS TABLE OF player_info_type;
+
+CREATE OR REPLACE PROCEDURE get_top_players(p_result OUT player_info_table)
 IS
 BEGIN
-    -- Open the cursor for the top players based on average score
-    OPEN p_result FOR
-        SELECT thrower_ID, AVG(score) AS average_score
-        FROM Throw
-        GROUP BY thrower_ID
-        ORDER BY AVG(score) DESC;
+    -- Retrieve the top players based on average score
+    SELECT player_info_type(thrower_ID, AVG(score))
+    BULK COLLECT INTO p_result
+    FROM Throw
+    GROUP BY thrower_ID
+    ORDER BY AVG(score) DESC;
 EXCEPTION
     WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('An error occurred while retrieving the top players.');
 END;
 /
-
 DECLARE
-    l_result SYS_REFCURSOR;
-    l_thrower_ID Throw.thrower_ID%TYPE;
-    l_average_score Throw.score%TYPE;
+    l_result player_info_table;
 BEGIN
     get_top_players(l_result);  -- Retrieve the top players based on average score
 
-    LOOP
-        FETCH l_result INTO l_thrower_ID, l_average_score;
-        EXIT WHEN l_result%NOTFOUND;
-
-        -- Process each row from the result set
-        DBMS_OUTPUT.PUT_LINE('Player ID: ' || l_thrower_ID || ', Average Score: ' || l_average_score);
+    FOR i IN 1 .. l_result.COUNT LOOP
+        -- Process each player info from the collection
+        DBMS_OUTPUT.PUT_LINE('Player ID: ' || l_result(i).thrower_ID || ', Average Score: ' || l_result(i).average_score);
     END LOOP;
-
-    CLOSE l_result;
 EXCEPTION
     WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('An error occurred while processing the result set.');
