@@ -1,7 +1,6 @@
-from time import strftime
-
 import pandas as pd
 from faker import Faker
+import random
 
 # Set up Faker to generate realistic fake data
 fake = Faker()
@@ -11,16 +10,6 @@ n = 20000
 
 # Generate random attributes for each entity
 data = []
-import random
-from datetime import datetime, timedelta
-
-# Generate a random year between 1900 and 2099
-
-
-# Create a fake date
-
-# Print the fake date
-
 
 for i in range(n):
     team_ID = fake.random_int(min=1, max=500)
