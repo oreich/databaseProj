@@ -3,12 +3,12 @@ CREATE OR REPLACE FUNCTION add_throw(
     game_id     IN NUMBER,
     time  IN NUMBER,
     score IN NUMBER,
-    throw_type IN VARCHAR2,
-    style_throw IN VARCHAR2,
-    location IN VARCHAR2
-    thrower_id   IN NUMBER,
-) RETURN VARCHAR2
-IS
+    throw_type IN VARCHAR2(30),
+    style_throw IN VARCHAR2(30),
+    location IN VARCHAR2(30),
+    thrower_id   IN NUMBER
+) RETURN VARCHAR2(100)
+AS
     l_result VARCHAR2(100);
 BEGIN
     -- Check if throw time is within the valid range (1-48)
@@ -37,10 +37,3 @@ END;
 /
 
 
-DECLARE
-    l_result VARCHAR2(100);
-BEGIN
-    l_result := add_throw(123,'hook', 'paint',45, 1, 1, 'Free Throw', 124, 'tip in');
-    DBMS_OUTPUT.PUT_LINE(l_result);
-END;
-/
