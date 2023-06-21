@@ -37,5 +37,21 @@ EXCEPTION
         RETURN l_result;
 END;
 /
+DECLARE
+  result VARCHAR2(100);
+BEGIN
+  result := add_throw(
+    700000,
+    'hook',
+    'paint',
+    45,
+    3,
+    1,
+    124,
+    'tip in'
+  );
+  DBMS_OUTPUT.PUT_LINE(result);
+END;
+/
 
 
