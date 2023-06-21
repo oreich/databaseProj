@@ -1,12 +1,12 @@
 CREATE OR REPLACE FUNCTION add_throw(
     throw_id   IN NUMBER,
-    throw_type IN VARCHAR2(30),
-    location IN VARCHAR2(30),
+    throw_type IN VARCHAR2,
+    location IN VARCHAR2,
     time  IN NUMBER,
     thrower_id   IN NUMBER,
     score IN NUMBER,
     game_id     IN NUMBER,
-    style_throw IN VARCHAR2(30)
+    style_throw IN VARCHAR2
     
 ) RETURN VARCHAR2
 
