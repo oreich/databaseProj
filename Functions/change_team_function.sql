@@ -6,9 +6,9 @@ IS
    l_result VARCHAR2(100);
 BEGIN
    -- Update the player's team
-   UPDATE players
-   SET team_id = p_new_team_id
-   WHERE player_id = p_player_id;
+   UPDATE play_in
+   SET chashken.team_id = p_new_team_id
+   WHERE liocihen.player.id = p_player_id;
 
    -- Check if the update was successful
    IF SQL%ROWCOUNT > 0 THEN
