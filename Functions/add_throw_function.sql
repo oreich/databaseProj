@@ -6,9 +6,10 @@ CREATE OR REPLACE FUNCTION add_throw(
     thrower_id   IN NUMBER,
     score IN NUMBER,
     game_id     IN NUMBER,
-    style_throw IN VARCHAR2(30),
+    style_throw IN VARCHAR2(30)
     
-) RETURN VARCHAR2(100)
+) RETURN VARCHAR2
+
 AS
     l_result VARCHAR2(100);
 BEGIN
@@ -17,8 +18,8 @@ BEGIN
         -- Check if throw score is within the valid range (0-3)
         IF score >= 0 AND score <= 3 THEN
             -- Insert the throw into the database
-            INSERT INTO throw (throw_ID,throw_type,location,time,thrower_id, score,game_id, style_throw)
-            VALUES (throw_ID,throw_type,location,time,thrower_id, score,game_id, style_throw);
+            INSERT INTO throw (throw_ID,throw_type,location,time,thrower_ID, score,game_ID, style_throw)
+            VALUES (throw_id,throw_type,location,time,thrower_id, score,game_id, style_throw);
 
 
             l_result := 'Throw added successfully.';
